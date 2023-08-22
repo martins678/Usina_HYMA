@@ -7,6 +7,7 @@ from PyQt6.QtWidgets import QMainWindow, QApplication, QLabel
 from PyQt6.QtGui import QPixmap, QIcon
 from PyQt6.QtCore import Qt
 
+
 class Principal (Ui_MainWindow, QMainWindow):
     def __init__(self, parent = None) -> None:
         super().__init__(parent)
@@ -20,10 +21,14 @@ class Principal (Ui_MainWindow, QMainWindow):
         self.botao_sair.clicked.connect(self.sair)
         self.botao_salvar.clicked.connect(self.salvar_dados)
         self.botao_sair.setIcon(QIcon('imagem/icon_on_off.png'))
+        self.botao_home.setIcon(QIcon('imagem/icone_home.png'))
+        self.botao_alterar.setIcon(QIcon('imagem/icone_alterar.png'))
+        self.botao_excluir.setIcon(QIcon('imagem/icone_excluir.png'))
         self.botao_lista.clicked.connect(self.lista)
 
         self.set_label_imagem(self.imagem_login, 'imagem/imagem_logo.png')
         self.set_label_imagem(self.imagem_cadastro_2,'imagem/imagem_logo.png')
+        self.set_label_imagem(self.logo_empresa, 'imagem/imagem_cadastro.png')
         
 
     def set_label_imagem(self, label: QLabel, end_imagem: str):
