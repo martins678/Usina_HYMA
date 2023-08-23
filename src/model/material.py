@@ -1,10 +1,23 @@
-class Usina_Biodiesel:
+from datetime import date 
+
+class Material:
+
     def __init__(self, fornecedor = None, materia_prima = None, quantidade:int = None):
         self.error = ''
         self.fornecedor = fornecedor
         self.materia_prima = materia_prima
         self.quantidade = quantidade
+        self.__DIAS = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo']
+        self.dia_da_semana = ''
+        
+    @property
+    def dia_da_semana(self):
+        return self.__dia_da_semana 
     
+    @dia_da_semana.setter 
+    def dia_da_semana(self, dia):
+        self.__dia_da_semana = self.__DIAS [date.today().weekday()]
+
     @property
     def fornecedor(self):
         return self.__fornecedor 
@@ -39,7 +52,10 @@ class Usina_Biodiesel:
             self.error = "O campo 'Quantidade' não pode ser zero (0)."
         
     def __str__(self):
-        return f" fornecedor: {self.fornecedor} \ | materia_prima: {self.materia_prima} \ | quantidade: {self.quantidade}"
+        return f" fornecedor: {self.fornecedor} \
+| materia_prima: {self.materia_prima} \
+| quantidade: {self.quantidade} \
+| dias_da_semana: {self.dia_da_semana}"
         
-biodiesel = Usina_Biodiesel
-print(biodiesel)
+mat = Material('Gomes', 'coco', 5)
+print(mat)
