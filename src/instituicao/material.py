@@ -2,13 +2,13 @@ from datetime import date
 
 class Material:
 
-    def __init__(self, fornecedor = None, materia_prima = None, quantidade:int = None):
-        self.error = ''
-        self.fornecedor = fornecedor
-        self.materia_prima = materia_prima
-        self.quantidade = quantidade
+    def __init__(self) -> None:
+        self.__fornecedor:str = ''
+        self.__materia_prima:str = '' 
+        self.__quantidade:int = 0
         self.__DIAS = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo']
         self.dia_da_semana = ''
+        self.error = ''
         
     @property
     def dia_da_semana(self):
@@ -23,8 +23,8 @@ class Material:
         return self.__fornecedor 
     
     @fornecedor.setter 
-    def fornecedor(self, fornecedor):
-        if fornecedor != None and len(fornecedor) != 0:
+    def fornecedor(self, fornecedor:str):
+        if len(fornecedor) != 0:
             self.__fornecedor = fornecedor
         else: 
             self.error = "O campo 'Fornecedor' é obrigatório!"
@@ -45,17 +45,8 @@ class Material:
         return self.__quantidade
     
     @quantidade.setter 
-    def quantidade(self, quantidade:int): #""
+    def quantidade(self, quantidade:int):
         if quantidade != 0:
             self.__quantidade = quantidade
         else: 
             self.error = "O campo 'Quantidade' não pode ser zero (0)."
-        
-    def __str__(self):
-        return f" fornecedor: {self.fornecedor} \
-| materia_prima: {self.materia_prima} \
-| quantidade: {self.quantidade} \
-| dias_da_semana: {self.dia_da_semana}"
-        
-mat = Material('Gomes', 'coco', 5)
-print(mat)
